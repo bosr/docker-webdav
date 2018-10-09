@@ -2,7 +2,7 @@
 _graceful_shutdown() {
 	echo "gracefully shutting down"
 	pidfile="/var/run/apache2.pid"
-	kill -s 28 $(<"$pidfile")
+	kill -s 28 $(<"$pidfile") 2>/dev/null || true
 }
 
 trap _graceful_shutdown SIGWINCH
